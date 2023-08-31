@@ -1,5 +1,5 @@
 const amqp = require("amqplib");
-const { bugsAsanapubsub } = require("../Integrations/asaana/pubsubAsaana");
+const { bugsAsanapubsub } = require("../../controllers/asaana/pubsubAsaana");
 
 exports.subscribeAsana = async function () {
     const connection = await amqp.connect('amqp://localhost:5672');

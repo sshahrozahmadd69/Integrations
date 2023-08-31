@@ -1,10 +1,10 @@
 const express = require("express")
 const app = express()
-const { connect } = require("./src/rabbitMQ/rabbitMQ")
-const { subscribeAsana } = require("./src/rabbitMQ/rabbitMQpubsub")
-const { connectTrelloQueue } = require('./src/rabbitMQ/rabbitMQTrello/rabbitMQTrello')
+const { connectAsana } = require("./src/services/asana/asana.service")
+const { subscribeAsana } = require("./src/services/asana/asana.PubSubservice")
+const { connectTrelloQueue } = require('./src/services/trello/rabbitMQTrello')
 
-connect ()
+connectAsana ()
 subscribeAsana()
 
 connectTrelloQueue()
