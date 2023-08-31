@@ -1,5 +1,5 @@
 const amqp = require("amqplib");
-const { sendBugTrello } = require("../../controllers/trello/bugTrello");
+const { sendBugTrello } = require("../../Controllers/trello/bugTrello");
 
 async function createChannel(){
     const connection = await amqp.connect("amqp://localhost:5672");

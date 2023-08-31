@@ -1,5 +1,5 @@
 const amqp = require("amqplib");
-const { bugsAsana } = require("../../controllers/asaana/bugsAsana");
+const { bugsAsana } = require("../../Controllers/asaana/bugsAsana");
 
 async function createChannel(){
     const connection = await amqp.connect("amqp://localhost:5672");
