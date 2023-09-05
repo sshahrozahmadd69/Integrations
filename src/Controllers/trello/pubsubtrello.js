@@ -8,37 +8,6 @@ const boardId= "602d36e37588527f3d87a691"
 const listId= "602d36e80791a8617b8c0e51"
 
 
-
-// exports.sendBugTrello = async (content) => {
-//      const {  name, desc } = JSON.parse(content);
-//     console.log(apiKey, apiToken, boardId, listId, name, desc);
-
-//     // const formattedDescription = desc.map(item => {
-//     //     return Object.entries(item)
-//     //         .map(([key, value]) => `${key}:  ${value}`)
-//     //         .join('\n');
-//     // });
-//     // // Combine the formatted description strings into a single string
-//     // const formattedDescriptionString = formattedDescription.join('\n\n');
-//     // console.log(formattedDescriptionString);
-
-//     try {
-//         const response = await axios.post(
-//             `https://api.trello.com/1/cards?key=${apiKey}&token=${apiToken}`,
-//             {
-//                 name: name,
-//                 desc: desc,
-//                 idList: listId,
-//                 idBoard: boardId
-//             }
-//         );
-//         console.log("Bug Successfully Sent to Trello");
-//     } catch (error) {
-//         console.error("Error sending bug to Trello:", error);
-//     }
-// };
-
-
 exports.sendBugTrello = async (content) => {
     const { name, desc } = JSON.parse(content);
 
