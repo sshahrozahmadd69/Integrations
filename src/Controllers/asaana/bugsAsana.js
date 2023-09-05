@@ -1,10 +1,8 @@
 const axios = require("axios");
 
-// const accessToken = "1/1205351360052859:aee8079fa9dd08d0c3af747177563935";
 
 exports.bugsAsana = async function (content) {
-//   console.log("accessToken", accessToken);
-
+    
   const { title, projectId, sectionId, description, accessToken } = JSON.parse(content);
 
   const formattedDescription = description.map(item => {

@@ -1,7 +1,8 @@
 const axios = require("axios");
 const amqp = require("amqplib");
 const accessToken = "1/1205351360052859:aee8079fa9dd08d0c3af747177563935";
-
+const projectId = "1205363916787728"
+const sectionId = "1205364109716404"
 
 
 exports.bugsAsanapubsub = async function bugsAsana(content) {
@@ -10,9 +11,9 @@ exports.bugsAsanapubsub = async function bugsAsana(content) {
   
     // Assuming 'content' holds the data needed to create the task
   
-    const { title, projectId, sectionId, description } = JSON.parse(content);
-    
-    const formattedDescription = description.map(item => {
+    const { name, desc } = JSON.parse(content);
+    console.log("PubSubAsaana",name, desc);
+    const formattedDescription = desc.map(item => {
         return Object.entries(item)
           .map(([key, value]) => `${key}:  ${value}`)
             .join('\n');
@@ -24,7 +25,7 @@ exports.bugsAsanapubsub = async function bugsAsana(content) {
     try {
         const bugData = {
             data: {
-                name: title,
+                name: name,
                 notes: formattedDescriptionString,
                 projects: [projectId],
                 memberships: [
@@ -45,7 +46,7 @@ exports.bugsAsanapubsub = async function bugsAsana(content) {
                 },
             }
         );
-        console.log("Bug posted successfully!");
+        console.log("Bug posted successfully on Asaana!");
         console.log("Bug ID:", response.data.data.gid);
     } catch (error) {
         console.error("Error sending bug to Asana:", error);

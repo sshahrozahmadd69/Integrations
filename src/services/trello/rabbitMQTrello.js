@@ -10,7 +10,7 @@ async function createChannel(){
 exports.connectTrelloQueue = async function () {
     try {
         const channel = await createChannel()
-        channel.consume("trelloJobs", async message => {
+        channel.consume("mongojobs", async message => {
             const content = message.content.toString();
             console.log(content);
             await sendBugTrello(content);
