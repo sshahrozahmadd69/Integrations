@@ -3,10 +3,13 @@ const app = express()
 const { connectAsana } = require("./src/services/asana/asana.service")
 const { subscribeAsana } = require("./src/services/asana/asana.PubSubservice")
 const { connectTrelloQueue } = require('./src/services/trello/rabbitMQTrello')
+const { subscribetrello } = require('./src/services/trello/trello.PubSubservice')
+
 
 connectAsana ()
 subscribeAsana()
 
+subscribetrello()
 connectTrelloQueue()
 
 

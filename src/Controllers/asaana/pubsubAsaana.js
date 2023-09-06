@@ -5,6 +5,7 @@ const projectId = "1205363916787728"
 const sectionId = "1205364109716404"
 
 
+
 exports.bugsAsanapubsub = async function bugsAsana(content) {
     console.log("accessToken", typeof accessToken);
     console.log("accessToken", accessToken);
@@ -47,7 +48,7 @@ exports.bugsAsanapubsub = async function bugsAsana(content) {
             }
         );
         console.log("Bug posted successfully on Asaana!");
-        console.log("Bug ID:", response.data.data.gid);
+        // console.log("Bug ID:", response.data.data.gid);
     } catch (error) {
         console.error("Error sending bug to Asana:", error);
     }

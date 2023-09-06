@@ -1,7 +1,7 @@
 const amqp = require("amqplib");
-const { bugsAsanapubsub } = require("../../controllers/asaana/pubsubAsaana");
+const { sendBugTrello } = require("../../controllers/trello/pubsubtrello");
 
-exports.subscribeAsana = async function () {
+exports.subscribetrello = async function () {
   const connection = await amqp.connect('amqp://localhost:5672');
   const channel = await connection.createChannel();
 
@@ -13,7 +13,7 @@ exports.subscribeAsana = async function () {
   const routingKey = 'bugs';
 
   const { queue } = await channel.assertQueue('', { exclusive: true });
-  console.log(`Waiting for messages in PubSub Asan queue: ${queue}`);
+  console.log(`Waiting for messages in PubSub Trello queue: ${queue}`);
 
   // Bind the queue to the specified routing key
   channel.bindQueue(queue, exchangeName, routingKey);
@@ -21,7 +21,8 @@ exports.subscribeAsana = async function () {
   channel.consume(queue, async (msg) => {
     const content = msg.content.toString();
     console.log(`Received: ${msg.content.toString()}`);
-    await bugsAsanapubsub(content);
+
+    await sendBugTrello(content);
 
   }, { noAck: true });
 }
